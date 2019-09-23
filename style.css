@@ -9,3 +9,11 @@ Description: Music Wordpress theme
 Tags: wp, music 
 
 */
+
+
+
+
+.comment-body .comment-author img {
+    width: 45px;
+    height: 35px;
+}

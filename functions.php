@@ -8,8 +8,32 @@ function zboom_theme() {
 
 }
 
-load_theme_textdomain('zboom',get_template_directory_uri().'/languages');
+function read_more($limit) {
+	$post_content= explode(" ", get_the_content());
+	$slice_content= array_slice($post_content, 0, $limit);
+	echo implode(" ", $slice_content);
+}
 
+
+register_post_type('zboomslider', array(
+	'labels' => array(
+		'name' =>  'Sliders',
+		'add_new_item' => 'Add New Slider'
+	),
+	'public' => true,
+	'supports' => array('title','thumbnail')
+));
+
+register_post_type('zboomservices', array(
+	'labels' => array(
+		'name' =>  'Blocks',
+		'add_new_item' => __('Add New Block','zboom')
+	),
+	'public' => true,
+	'supports' => array('title', 'editor', 'thumbnail')
+));
+
+load_theme_textdomain('zboom',get_template_directory_uri().'/languages');
 add_action('after_setup_theme','zboom_theme');
 
 if(function_exists('register_nav_menu')) {
