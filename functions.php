@@ -40,4 +40,18 @@ if(function_exists('register_nav_menu')) {
 	register_nav_menu('main-menu',__('Main menu','zboom'));
 }
 
+function zboom_right_sidebar() {
+	register_sidebar(array(
+		'name' => __('Right Sidebar','zboom'),
+		'description' => __('Add your right sidebar here', 'zboom'),
+		'id' => 'right-sidebar',
+		'before_widget' => '<div class="box">',
+		'after_widget' => '</div></div>',
+		'before_title' => '<div class="heading"><h2>',
+		'after_title' => '</h2></div><div class="content">',
+	));
+}
+
+add_action('widgets_init','zboom_right_sidebar');
+
 ?>
