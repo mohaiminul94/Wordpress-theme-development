@@ -17,3 +17,9 @@ Tags: wp, music
     width: 45px;
     height: 35px;
 }
+
+.right-sidebar ul {
+	background: #1e1e1e;
+    padding-left: 20px;
+    margin-left: 0px!important;
+}

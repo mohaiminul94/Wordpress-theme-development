@@ -45,8 +45,17 @@ function zboom_right_sidebar() {
 		'name' => __('Right Sidebar','zboom'),
 		'description' => __('Add your right sidebar here', 'zboom'),
 		'id' => 'right-sidebar',
-		'before_widget' => '<div class="box">',
+		'before_widget' => '<div class="box right-sidebar">',
 		'after_widget' => '</div></div>',
+		'before_title' => '<div class="heading"><h2>',
+		'after_title' => '</h2></div><div class="content">',
+	));
+	register_sidebar(array(
+		'name' => __('Footer widgets','zboom'),
+		'description' => __('Add your footer widgets here', 'zboom'),
+		'id' => 'footer-widget',
+		'before_widget' => '<div class="col-1-4"><div class="wrap-col"><div class="box">',
+		'after_widget' => '</div></div></div></div>',
 		'before_title' => '<div class="heading"><h2>',
 		'after_title' => '</h2></div><div class="content">',
 	));
