@@ -61,11 +61,25 @@ Template Name: Home
 							<div class="wrap-col">
 								<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 								<div class="info">By <?php the_author(); ?> on <?php the_date(); ?> with <?php comments_popup_link('No comments','1 comment','% Comments'); ?></a></div>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam viverra convallis auctor .....</p>
+								<p><?php read_more(30); ?></p>
 							</div>
 						</div>
 					</article>
 					<?php endwhile; ?>
+
+					
+
+					<div id="pagi">
+						<?php
+							the_posts_pagination(array(
+								'show_all' => TRUE,
+								'prev_text' => 'PREVIOUS',
+								'next_text' => 'NEXT',
+								'screen_reader_text' => ' '
+							));
+						?>
+					</div>
+
 				</div>
 			</div>
 			<div class="col-1-3">

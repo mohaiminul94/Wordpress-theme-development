@@ -18,10 +18,6 @@
     
     <!-- CSS
   ================================================== -->
-  	<link rel="stylesheet" href="<?php echo esc_url(get_template_directory_uri()); ?>/css/zerogrid.css">
-	<link rel="stylesheet" href="<?php echo esc_url(get_template_directory_uri()); ?>/css/style.css">
-    <link rel="stylesheet" href="<?php echo esc_url(get_template_directory_uri()); ?>/css/responsive.css">
-	<link rel="stylesheet" href="<?php echo esc_url(get_template_directory_uri()); ?>/css/responsiveslides.css" />
 
 	<link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_url'); ?>">
 	
@@ -38,32 +34,50 @@
 	<![endif]-->
 	
 	<link href='<?php echo esc_url(get_template_directory_uri()); ?>/images/favicon.ico' rel='icon' type='image/x-icon'/>
-	<script src="<?php echo esc_url(get_template_directory_uri()); ?>/js/jquery.min.js"></script>
-	<script src="<?php echo esc_url(get_template_directory_uri()); ?>/js/responsiveslides.js"></script>
-	<script>
-		$(function () {
-		  $("#slider").responsiveSlides({
-			auto: true,
-			pager: false,
-			nav: true,
-			speed: 500,
-			maxwidth: 962,
-			namespace: "centered-btns"
-		  });
-		});
-	</script>
+
+	<style>
+		<?php global $zboom; echo $zboom['custom-css']; ?>
+
+		body {
+			background-color: <?php echo $zboom['body-background']['background-color']; ?>!important;
+			background-image:url(<?php echo $zboom['body-background']['background-image']; ?>)!important;
+			background-repeat:<?php echo $zboom['body-background']['background-repeat']; ?>!important;
+			background-size:<?php echo $zboom['body-background']['background-size']; ?>!important;
+			background-attachment:<?php echo $zboom['body-background']['background-attachment']; ?>!important;
+			background-position:<?php echo $zboom['body-background']['background-position']; ?>!important;
+		}
+
+		nav .wrap-nav {
+			border-style: <?php echo $zboom['menu-border']['border-style']; ?>!important;
+			border-width: <?php echo $zboom['menu-border']['border-top']; ?>!important;
+			border-color: <?php echo $zboom['menu-border']['border-color']; ?>!important;
+		}
+
+		article a {
+			color: <?php echo $zboom['link-color']; ?>!important;
+		}
+
+	</style>
+	
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
 <!--------------Header--------------->
 <header>
 	<div class="wrap-header zerogrid">
-		<div id="logo"><a href="http://localhost/wp/"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/logo.png"/></a></div>
+		<div id="logo"><a href="http://localhost/wp/"><img src="<?php global $zboom; echo $zboom['logo-upload']['url']; ?>"/></a></div>
 		
+		<?php if($zboom['search-visibility'] == 1) : ?>
+
 		<div id="search">
-			<div class="button-search"></div>
-			<input type="text" value="Search..." onfocus="if (this.value == &#39;Search...&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;Search...&#39;;}">
+			<div class=""></div>
+			<form method="GET" action="<?php esc_url(bloginfo('home')); ?>">
+				<input name="s" type="text" value="Search..." onfocus="if (this.value == &#39;Search...&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;Search...&#39;;}">
+			</form>
 		</div>
+
+	<?php endif; ?>
+
 	</div>
 </header>
 
